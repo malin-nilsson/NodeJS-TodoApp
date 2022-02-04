@@ -19,9 +19,34 @@ app.use(express.urlencoded({
 }));
 
 
+// Sort todos by date (oldest)
+// https://stackoverflow.com/a/10124184
+function sortByOldest() {
+    todos.sort(function (a, b) {
+        let dateA = new Date(a.created),
+            dateB = new Date(b.created);
+        return dateA - dateB;
+    });
+}
+
+// Sort todos by date (newest)
+// https://stackoverflow.com/a/10124184
+function sortByNewest() {
+    todos.sort(function (a, b) {
+        let dateA = new Date(a.created),
+            dateB = new Date(b.created);
+        return dateB - dateA;
+    });
+}
+
 // Route for home
 app.get('/', (req, res) => {
-   
+    const sort = sortByOldest();
+
+    res.render('home', {
+        todos,
+        sort,
+    });
 })
 
 // Route for completed todos
@@ -42,12 +67,22 @@ app.get('/notcompleted', (req, res) => {
 
 // Route for sorting by newest
 app.get('/sortbynewest', (req, res) => {
-    
+    const sort = sortByNewest();
+
+    res.render('sortbynewest', {
+        todos,
+        sort
+    })
 })
 
 // Route for sorting by oldest
 app.get('/sortbyoldest', (req, res) => {
-   
+    const sort = sortByOldest();
+
+    res.render('sortbyoldest', {
+        todos,
+        sort
+    })
 })
 
 // Route for creating new todo
