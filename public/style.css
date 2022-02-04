@@ -79,6 +79,7 @@ nav a:hover {
     color: #000;
 }
 
+/* TODOS LIST */
 ul {
     display: flex;
     flex-direction: column;
@@ -257,7 +258,6 @@ h2 {
 
 /* FORM */
 
-
 form {
     display: flex;
     flex-direction: column;
@@ -296,8 +296,6 @@ input[type=text] {
     margin: 12px 5px 15px 0px;
 }
 
-
-
 input[type=submit] {
     padding: 5px 10px;
     margin: 15px 0px 0px;
@@ -324,7 +322,18 @@ input[type=submit]:hover {
     padding: 0px;
 }
 
+.radio-buttons-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+}
 
+.radio-button {
+    display: flex;
+    padding: 0px 20px 0px 0px;
+}
 
 .todo-single {
     padding: 10px 0px 20px;
@@ -355,15 +364,23 @@ p {
     margin: 0;
 }
 
-.radio-buttons-container {
+/* FOOTER */
+
+footer {
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
+    flex-direction: column;
     width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 0px 10px;
 }
 
-.radio-button {
-    display: flex;
-    padding: 0px 20px 0px 0px;
+footer p {
+font-size: 0.75rem;
 }
+
+footer a,
+footer a:hover {
+    color: #000;
+}
+
