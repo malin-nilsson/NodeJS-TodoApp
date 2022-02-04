@@ -52,13 +52,6 @@ main {
 
 
 /* HEADER & NAV */
-nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-
 header {
     display: flex;
     align-items: center;
@@ -66,16 +59,24 @@ header {
     padding: 0px 0px 30px;
 }
 
+nav {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
 nav a {
     color: #000;
-    padding: 0px 10px;
+    padding: 0px;
     font-size: 0.9rem;
     text-transform: uppercase;
     text-decoration: none;
+    border-bottom: 2px solid #ededed;
+    transition: border-bottom 0.3;
 }
 
 nav a:hover {
-    text-decoration: underline;
+    border-bottom: 2px solid #5b5b5b;
     color: #000;
 }
 
@@ -209,7 +210,7 @@ li a {
 
 h1 {
     color: #5b5b5b;
-    font-size: 2rem;
+    font-size: 2.2rem;
     margin-bottom: 20px;
     font-family: 'Caveat', cursive;
 }

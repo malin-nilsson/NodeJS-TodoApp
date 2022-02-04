@@ -19,7 +19,7 @@ const todos = [{
 {
     id: 3,
     created:  "2022-01-23 12:20:46",
-    description: "Pick up package",
+    description: "Book trip",
     done: false
 },
 ]
