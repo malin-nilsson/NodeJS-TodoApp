@@ -1,0 +1,23 @@
+<div class="content-container">
+    
+
+    <div class="todo-single-container">
+            <h2>To do</h2>
+        <div class="todo-single">
+            <span class="small-heading">Description:</span>
+            <p>{{todo.description}}</p>
+        </div>
+        <div class="todo-singel">
+            <span class="small-heading">Created:</span>
+         <p>{{todo.created}}</p>
+        </div>
+        <div class="todo-single">
+            <span class="small-heading">Done:</span>
+             <p>{{getStatus}}</p>
+        </div>
+        <div class="buttons">
+            <a href="/{{todo.id}}/update">Update</a>
+            <a href="/{{todo.id}}/delete">Delete</a>
+        </div>
+    </div>
+</div>

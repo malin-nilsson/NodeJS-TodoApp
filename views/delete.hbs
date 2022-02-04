@@ -1,0 +1,17 @@
+<div class="content-container">
+
+    <div class="todo-delete-container"> 
+    <h2>Confirm delete</h2>
+
+    <div class="info">
+        <span class="small-heading">Description:</span>
+        <p>{{todo.description}}</p>
+    </div>
+
+    <form action="/{{todo.id}}/delete" method="post">
+
+        <input type="submit" value="Delete">
+
+    </form>
+    </div>
+</div>
