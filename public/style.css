@@ -382,5 +382,6 @@ font-size: 0.75rem;
 footer a,
 footer a:hover {
     color: #000;
+    text-decoration: underline;
 }
 
