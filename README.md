@@ -10,7 +10,7 @@ All tasks should have the following attributes:
 - Created (date & time) 
 - Description
 - Done (true / false)
-
+- 
 The objective was for users to be able to perform all CRUD operations on todos, display tasks depending on completed/not completed, and sort tasks based on when they were created, newest → oldest and oldest → newest.
 
 ## Installation
