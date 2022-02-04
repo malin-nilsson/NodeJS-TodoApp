@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Poppins:wght@300;400;500;800&display=swap');
 
 * {
     margin: 0;
@@ -38,11 +38,18 @@ main {
 }
 
 
-@media only screen and (min-width: 738px) {
+@media only screen and (min-width: 768px) {
+    .wrapper {
+        width: 50%;
+    }
+}
+
+@media only screen and (min-width: 1110px) {
     .wrapper {
         width: 30%;
     }
 }
+
 
 /* HEADER & NAV */
 nav {
@@ -202,15 +209,13 @@ li a {
 
 h1 {
     color: #5b5b5b;
-    font-size: 1.3rem;
-    margin-bottom: 10px;
-    text-transform: uppercase;
-    font-weight: 400;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    font-family: 'Caveat', cursive;
 }
 
 h2 {
     font-size: 1rem;
-    text-transform: uppercase;
     font-weight: 500;
     margin-bottom: 10px;
     color: #383838;
