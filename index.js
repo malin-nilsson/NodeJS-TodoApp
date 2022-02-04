@@ -19,6 +19,28 @@ app.use(express.urlencoded({
 }));
 
 
+/* Functions */
+
+// Get new ID
+function getNewID(list) {
+    let maxId = 0;
+    for (const item of list) {
+        if (item.id > maxId) {
+            maxId = item.id;
+        }
+    }
+    return maxId + 1;
+}
+
+// Display status of todo (complete or not complete)
+function displayStatus(todo) {
+    if (todo.done === false) {
+        return "No";
+    } else {
+        return "Yes";
+    }
+}
+
 // Sort todos by date (oldest)
 // https://stackoverflow.com/a/10124184
 function sortByOldest() {
@@ -107,17 +129,38 @@ app.post('/create', (req, res) => {
 
 // Route for showing individual todo
 app.get('/:id', (req, res) => {
-   
+    let id = parseInt(req.params.id);
+    let todo = todos.find(t => (t.id === id));
+    let getStatus = displayStatus(todo);
+
+    res.render('single', {
+        todo,
+        getStatus
+    })
+
 })
 
 // Route for updating individual todo
 app.get('/:id/update', (req, res) => {
-   
+    const id = parseInt(req.params.id);
+    const todo = todos.find(t => t.id === id);
+
+    res.render('update', {
+        todo,
+    })
 })
 
 // Route for posting updated todo
 app.post('/:id/update', (req, res) => {
-  
+    const id = parseInt(req.params.id);
+    const index = todos.findIndex(i => (i.id === id));
+
+    req.body.status = Boolean(req.body.status);
+
+    todos[index].description = req.body.description;
+    todos[index].done = req.body.status;
+
+    res.redirect('/' + id)
 })
 
 // Route for deleting individual todo
