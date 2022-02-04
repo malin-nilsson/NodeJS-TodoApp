@@ -1,8 +1,11 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
 const {
-    redirect
-} = require('express/lib/response');
+    getNewID,
+    sortByNewest,
+    sortByOldest,
+    displayStatus
+} = require('./utils.js')
 const app = express();
 const todos = require('./data/todos.js')
 
@@ -19,48 +22,6 @@ app.use(express.urlencoded({
 }));
 
 
-/* Functions */
-
-// Get new ID
-function getNewID(list) {
-    let maxId = 0;
-    for (const item of list) {
-        if (item.id > maxId) {
-            maxId = item.id;
-        }
-    }
-    return maxId + 1;
-}
-
-// Display status of todo (complete or not complete)
-function displayStatus(todo) {
-    if (todo.done === false) {
-        return "No";
-    } else {
-        return "Yes";
-    }
-}
-
-// Sort todos by date (oldest)
-// https://stackoverflow.com/a/10124184
-function sortByOldest() {
-    todos.sort(function (a, b) {
-        let dateA = new Date(a.created),
-            dateB = new Date(b.created);
-        return dateA - dateB;
-    });
-}
-
-// Sort todos by date (newest)
-// https://stackoverflow.com/a/10124184
-function sortByNewest() {
-    todos.sort(function (a, b) {
-        let dateA = new Date(a.created),
-            dateB = new Date(b.created);
-        return dateB - dateA;
-    });
-}
-
 // Route for home
 app.get('/', (req, res) => {
     const sort = sortByOldest();
@@ -73,7 +34,7 @@ app.get('/', (req, res) => {
 
 // Route for completed todos
 app.get('/completed', (req, res) => {
- 
+
     res.render('completed', {
         todos
     })
@@ -81,7 +42,7 @@ app.get('/completed', (req, res) => {
 
 // Route for incomplete todos
 app.get('/notcompleted', (req, res) => {
-  
+
     res.render('notcompleted', {
         todos
     })
@@ -115,7 +76,7 @@ app.get('/create', (req, res) => {
 // Route for posting new todo
 app.post('/create', (req, res) => {
     const id = getNewID(todos);
-  
+
     const newTodo = {
         id: id,
         description: req.body.description,
