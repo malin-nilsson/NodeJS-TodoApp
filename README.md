@@ -14,6 +14,16 @@ All tasks should have the following attributes:
 The objective was for users to be able to perform all CRUD operations on todos, display tasks depending on completed/not completed, and sort tasks based on when they were created, newest → oldest and oldest → newest.
 
 ## Installation
+1. Clone the repo\
+git clone https://github.com/malin-nilsson/NodeJS-ToDoList
+
+2. Install npm packages\
+npm install
+
+3. Run Nodemon\
+nodemon
+
+Visit localhost:8000 to view the project
 
 ## Built with
 - HTML & CSS
