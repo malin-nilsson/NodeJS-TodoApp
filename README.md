@@ -15,13 +15,13 @@ The objective was for users to be able to perform all CRUD operations on todos, 
 
 ## Installation
 1. Clone the repo\
-git clone https://github.com/malin-nilsson/NodeJS-ToDoList
+`git clone https://github.com/malin-nilsson/NodeJS-ToDoList`
 
 2. Install npm packages\
-npm install
+`npm install`
 
 3. Run Nodemon\
-nodemon
+`nodemon`
 
 Visit localhost:8000 to view the project
 
