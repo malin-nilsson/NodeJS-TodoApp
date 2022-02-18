@@ -1,17 +1,5 @@
-const todos = require('./data/todos.js')
 
 /* Functions */
-
-// Get new ID
-module.exports.getNewID = (list) => {
-    let maxId = 0;
-    for (const item of list) {
-        if (item.id > maxId) {
-            maxId = item.id;
-        }
-    }
-    return maxId + 1;
-}
 
 // Display status of todo (complete or not complete)
 module.exports.displayStatus = (todo) => {
