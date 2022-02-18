@@ -5,10 +5,10 @@
 
     <div class="info">
         <span class="small-heading">Description:</span>
-        <p>{{todo.description}}</p>
+        <p>{{description}}</p>
     </div>
 
-    <form action="/{{todo.id}}/delete" method="post">
+    <form action="/todos/{{_id}}/delete" method="post">
 
         <input type="submit" value="Delete">
 

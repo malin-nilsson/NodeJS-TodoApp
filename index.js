@@ -1,4 +1,5 @@
 require('dotenv').config();
+
 const express = require('express');
 const exphbs = require('express-handlebars');
 const todosRouter = require('./routers/todos-router.js')
@@ -12,6 +13,7 @@ app.engine('hbs', exphbs.engine({
 app.set('view engine', 'hbs');
 
 app.use(express.static('public'));
+app.use(express.json());
 
 app.use(express.urlencoded({
     extended: true
@@ -21,7 +23,7 @@ app.use(express.urlencoded({
 // Route for home
 
 app.get('/', (req, res) => {
-    res.render('home')
+    res.redirect('/todos')
 })
 
 app.use('/todos', todosRouter)

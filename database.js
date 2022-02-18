@@ -14,8 +14,7 @@ async function getTodosCollection() {
     return db.collection("todos")
 }
 
-
-
 module.exports = {
+    getDb,
     getTodosCollection
 }

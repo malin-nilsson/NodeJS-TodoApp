@@ -14,9 +14,10 @@ const router = express.Router()
 router.get('/', async (req, res) => {
     const collection = await db.getTodosCollection()
     const todos = await collection.find().toArray()
+
     const sort = sortByOldest();
 
-    res.render('home', {
+    res.render('todos/todos-list', {
         todos,
         sort
     })
@@ -41,7 +42,6 @@ router.post('/create', async (req, res) => {
 
 router.get('/:id', async (req, res, next) => {
     let id = undefined;
-
 
     try {
         id = ObjectId(req.params.id)
@@ -68,22 +68,35 @@ router.get('/:id', async (req, res, next) => {
     }
 })
 
-router.post('/:id/delete', async (req, res, next) => {
-    let id = undefined;
-    try {
-        id = ObjectId(req.params.id)
-    } catch {
-        next()
-    }
+router.get('/:id/delete', async (req, res, next) => {
+    let id = ObjectId(req.params.id)
 
     if (id) {
+        const collection = await db.getTodosCollection()
+
+        collection.findOne({
+            _id: id
+        }, (err, todo) => {
+            if (todo) {
+                res.render('todos/todos-delete', todo)
+            } else {
+                next()
+            }
+        })
+    }
+    
+})
+
+router.post('/:id/delete', async (req, res, next) => {
+    let id = ObjectId(req.params.id)
+  
         const collection = await db.getTodosCollection()
         const result = await collection.deleteOne({
             _id: id
         })
 
         res.redirect("/todos")
-    }
+    
 })
 
 router.get('/:id/update', async (req, res, next) => {
@@ -124,7 +137,9 @@ router.post('/:id/update', async (req, res, next) => {
 
 })
 
-router.get('/sortbynewest', (req, res) => {
+router.get('/sortbynewest', async (req, res) => {
+    const collection = await db.getTodosCollection()
+    const todos = await collection.find().toArray()
     const sort = sortByNewest();
 
     res.render('todos/todos-sortbynewest', {
@@ -133,7 +148,9 @@ router.get('/sortbynewest', (req, res) => {
     })
 })
 
-router.get('/sortbyoldest', (req, res) => {
+router.get('/sortbyoldest', async (req, res) => {
+    const collection = await db.getTodosCollection()
+    const todos = await collection.find().toArray()
     const sort = sortByOldest();
 
     res.render('todos/todos-sortbyoldest', {

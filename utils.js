@@ -1,3 +1,4 @@
+const db = require('./database.js')
 
 /* Functions */
 
@@ -12,8 +13,11 @@ module.exports.displayStatus = (todo) => {
 
 // Sort todos by date (oldest)
 // https://stackoverflow.com/a/10124184
-module.exports.sortByOldest = () => {
-    todos.sort(function (a, b) {
+module.exports.sortByOldest = async () => {
+    const collection = await db.getTodosCollection()
+    const todos = await collection.find().toArray()
+
+    await todos.sort(function (a, b) {
         let dateA = new Date(a.created),
             dateB = new Date(b.created);
         return dateA - dateB;
@@ -22,8 +26,11 @@ module.exports.sortByOldest = () => {
 
 // Sort todos by date (newest)
 // https://stackoverflow.com/a/10124184
-module.exports.sortByNewest = () => {
-    todos.sort(function (a, b) {
+module.exports.sortByNewest = async () => {
+    const collection = await db.getTodosCollection()
+    const todos = await collection.find().toArray()
+
+    await todos.sort(function (a, b) {
         let dateA = new Date(a.created),
             dateB = new Date(b.created);
         return dateB - dateA;
