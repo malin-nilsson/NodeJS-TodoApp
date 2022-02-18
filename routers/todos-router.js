@@ -16,7 +16,6 @@ router.get('/', async (req, res) => {
     const todos = await collection.find().toArray()
     const sort = sortByOldest();
 
-
     res.render('home', {
         todos,
         sort
