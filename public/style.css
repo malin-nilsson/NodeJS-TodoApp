@@ -23,7 +23,8 @@ main {
     height: 100vh;
     overflow-y: scroll;
 }
-
+ /* WRAPPER FOR CONTENT */
+ 
 .wrapper {
     width: 90%;
     margin: 30px auto 0px;
