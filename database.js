@@ -1,5 +1,7 @@
 const { MongoClient } = require('mongodb')
+require('dotenv').config();
 
+// Get database
 async function getDb() {
     const client = new MongoClient(process.env.MONGODB_CONNECTION_STRING)
     await client.connect()
@@ -9,6 +11,7 @@ async function getDb() {
     return db
 }
 
+// Get todos collection
 async function getTodosCollection() {
     const db = await getDb()
     return db.collection("todos")
