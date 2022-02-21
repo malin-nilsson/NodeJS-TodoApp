@@ -1,12 +1,12 @@
 // REQUIRES //
-
 const express = require('express')
 const db = require('../database.js')
 const {
     ObjectId
 } = require('mongodb')
 const {
-    displayStatus
+    displayStatus,
+    validateTodo
 } = require('../utils.js')
 
 // ROUTER
@@ -34,10 +34,18 @@ router.post('/create', async (req, res) => {
         done: false,
     }
 
-    const todosCollection = await db.getTodosCollection()
-    const result = await todosCollection.insertOne(todo)
-
-    res.redirect("/todos/" + result.insertedId)
+    if (validateTodo(todo)) {
+        const todosCollection = await db.getTodosCollection()
+        const result = await todosCollection.insertOne(todo)
+    
+        res.redirect("/todos/" + result.insertedId)
+    } else {
+        res.render("todos/todos-create", {
+            error: "You forgot to add a description!",
+            created: new Date().toLocaleString(),
+            done: false
+        })
+    } 
 })
 
 // GET: Specific todo

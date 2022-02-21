@@ -174,7 +174,7 @@ li a {
     box-shadow: unset;
 }
 
-/* CONTAINER FOR ALL PAGES */
+/* CONTAINER FOR MAIN CONTENT */
 
 .content-container {
     display: flex;
@@ -364,6 +364,12 @@ p {
     font-size: 0.9rem;
     font-weight: 300;
     margin: 0;
+}
+
+/* ERROR MESSAGE */
+
+.error {
+    color: red;
 }
 
 /* FOOTER */
