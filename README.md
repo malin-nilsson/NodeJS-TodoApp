@@ -1,9 +1,11 @@
 # To Do App
 To do app built with Node.js, Express.js and Handlebars 📝
 
+This was a school assignment where the goal was to learn and develop skills in Node.js, Express.js and template engines.
+
+
 ![Screenshot](public/screenshot.png)
 
-This was a school assignment where the goal was to develop skills in Node.js, Express.js, routing and templating with Handlebars.
 
 All tasks should have the following attributes:
 - Id
