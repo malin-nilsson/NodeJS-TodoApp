@@ -23,7 +23,8 @@ main {
     height: 100vh;
     overflow-y: scroll;
 }
-
+ /* WRAPPER FOR CONTENT */
+ 
 .wrapper {
     width: 90%;
     margin: 30px auto 0px;
@@ -173,7 +174,7 @@ li a {
     box-shadow: unset;
 }
 
-/* CONTAINER FOR ALL PAGES */
+/* CONTAINER FOR MAIN CONTENT */
 
 .content-container {
     display: flex;
@@ -275,7 +276,7 @@ label {
 }
 
 #new-todo-description {
-    margin: 5px 0px 30px;
+    margin: 5px 0px 20px;
     font-size: 0.9rem;
 }
 
@@ -363,6 +364,12 @@ p {
     font-size: 0.9rem;
     font-weight: 300;
     margin: 0;
+}
+
+/* ERROR MESSAGE */
+
+.error {
+    color: red;
 }
 
 /* FOOTER */

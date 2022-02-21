@@ -2,10 +2,11 @@
 <div class="todo-update-container"> 
 <h2>Update To Do</h2>
 
-<form action="/{{todo.id}}/update" method="post">
+<form action="/todos/{{_id}}/update" method="post">
 <label for="description">
 Description:
-</label><input type="text" id ="new-todo-description" name="description" value="{{todo.description}}">
+</label><input type="text" id ="new-todo-description" name="description" value="{{description}}">
+<p class="error">{{error}}</p>
 <label for="done">Is task done?</label>
  <div class="checkbox"> 
  <input type="checkbox" id="true" name="status" value="true">
