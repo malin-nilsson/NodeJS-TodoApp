@@ -139,15 +139,22 @@ router.post('/:id/update', async (req, res, next) => {
         done: req.body.status
     }
 
-    const collection = await db.getTodosCollection()
-    await collection.updateOne({
-        _id: id
-    }, {
-        $set: todo
-    })
-
-    res.redirect("/todos/" + id)
-
+    if (validateTodo(todo)) {
+        const collection = await db.getTodosCollection()
+        await collection.updateOne({
+            _id: id
+        }, {
+            $set: todo
+        })
+    
+        res.redirect("/todos/" + id)
+    } else {
+        res.render("todos/todos-update", {
+            error: "You forgot to add a description!",
+            _id: id,
+            title: todo.description,
+        })
+    }
 })
 
 // GET: Sort by newest
