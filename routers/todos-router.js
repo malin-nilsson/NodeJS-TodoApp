@@ -37,7 +37,7 @@ router.post('/create', async (req, res) => {
     if (validateTodo(todo)) {
         const todosCollection = await db.getTodosCollection()
         const result = await todosCollection.insertOne(todo)
-    
+
         res.redirect("/todos/" + result.insertedId)
     } else {
         res.render("todos/todos-create", {
@@ -45,7 +45,7 @@ router.post('/create', async (req, res) => {
             created: new Date().toLocaleString(),
             done: false
         })
-    } 
+    }
 })
 
 // GET: Specific todo
@@ -94,20 +94,20 @@ router.get('/:id/delete', async (req, res, next) => {
             }
         })
     }
-    
+
 })
 
 // POST: Delete todo
 router.post('/:id/delete', async (req, res, next) => {
     let id = ObjectId(req.params.id)
-  
-        const collection = await db.getTodosCollection()
-        const result = await collection.deleteOne({
-            _id: id
-        })
 
-        res.redirect("/todos")
-    
+    const collection = await db.getTodosCollection()
+    const result = await collection.deleteOne({
+        _id: id
+    })
+
+    res.redirect("/todos")
+
 })
 
 // GET: Update id
@@ -146,7 +146,7 @@ router.post('/:id/update', async (req, res, next) => {
         }, {
             $set: todo
         })
-    
+
         res.redirect("/todos/" + id)
     } else {
         res.render("todos/todos-update", {
@@ -160,32 +160,25 @@ router.post('/:id/update', async (req, res, next) => {
 // GET: Sort by newest
 router.get('/sortbynewest', async (req, res) => {
     const collection = await db.getTodosCollection()
-    const todos = await collection.find().toArray()
-    const sort = todos.sort(function (a, b) {
-        let dateA = new Date(a.created),
-            dateB = new Date(b.created);
-        return dateB - dateA;
-    });
+    const todos = await collection.find().sort({
+        created: -1
+    }).toArray();
 
     res.render('todos/todos-sortbynewest', {
         todos,
-        sort
     })
 })
 
 // GET: Sort by oldest
 router.get('/sortbyoldest', async (req, res) => {
     const collection = await db.getTodosCollection()
-    const todos = await collection.find().toArray()
- 
-    todos.sort(function (a, b) {
-        let dateA = new Date(a.created), dateB = new Date(b.created)
-        return dateA - dateB
-    },
+    const todos = await collection.find().sort({
+        created: 1
+    }).toArray();
 
-        res.render('todos/todos-sortbyoldest', {
-            todos
-        }))
+    res.render('todos/todos-sortbyoldest', {
+        todos
+    })
 })
 
 // GET: Completed todos
