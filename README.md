@@ -1,5 +1,5 @@
 # To Do App
-To do app built with Node.js, Express.js, Handlebars and MongoDB 📝
+To do app using Node.js, Express.js, Handlebars and MongoDB 📝
 
 This was a school assignment where the goal was to learn and develop skills in Node.js, Express.js, template engines and MongoDB.
 
@@ -8,7 +8,7 @@ This was a school assignment where the goal was to learn and develop skills in N
 
 ## Users should be able to:
 - Perform all CRUD operations on todos
-- Display tasks depending on completed/not completed
+- Sort tasks depending on completed/not completed
 - Sort tasks based on when they were created, newest → oldest and oldest → newest
 
 ## Built with
